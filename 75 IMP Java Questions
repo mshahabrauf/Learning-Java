@@ -67,18 +67,54 @@ Java Freshers Top 75 Core Java Intervie Questions List Java Interview Questions
 13.What is abstract class or abstract method ?
    Abstract class: is a restricted class that cannot be used to create objects (to access it, it must be inherited from another class). 
    Abstract method: can only be used in an abstract class, and it does not have a body. The body is provided by the subclass (inherited from).
-14.What is default value of a boolean ?
+14.What is default value of a boolean ? False
 15.When to use LinkedList or ArrayList ? 
+   ArrayList provides constant time for search operation, so it is better to use ArrayList if searching is more frequent operation than add and remove operation. 
+   The LinkedList provides constant time for add and remove operations. So it is better to use LinkedList for manipulation.
 16.What is daemon thread ? 
+  A daemon thread is a thread that runs in the background and does not prevent the Java Virtual Machine (JVM) from exiting when all non-daemon threads in Java have been completed.
+  These threads are typically used to perform background tasks such as garbage collection, monitoring, and other system-level operations.
 17.Does each thread in java uses seperate stack ? 
+  Each JVM thread has a private JVM stack, created at the same time as the thread.
 18.What is the difference between Enumeration and Iterator ?
+  1. Iterators allow the caller to remove elements from the underlying collection during the iteration with well-defined semantics.
+  2. Method names have been improved.
+  3. Iterators are fail-fast . i.e. when one thread changes the collection by add / remove operations ,
+  while another thread is traversing it through an Iterator using hasNext() or next() method,
+  the iterator fails quickly by throwing ConcurrentModificationException .
+  The fail-fast behavior of iterators can be used only to detect bugs. 
+  The Enumerations returned by the methods of classes like Hashtable,
+  Vector are not fail-fast that is achieved by synchronizing the block of code inside the nextElement() 
+  method that locks the current Vector object which costs lots of time.
 19.Does system.exit() in try block executes finally block ? 
-20.What is fail-fast in Java ? Explain ? 
+   No. System.exit(0) doesn't return, and the finally block is not executed. 
+20.What is fail-fast in Java ? Explain ?
+   Fail-fast and Fail-safe are the iterators or collections in Java. 
+   Java SE specification doesn't use the Fail-safe term. We use the Fail-safe to segregate between the Non-Fail-fast and Fail-fast iterators. 
+   The Fail-Fast system terminates the operation as-fast-as-possible that are exposing failures and stop the entire operation. Whereas, Fail-Safe system doesn't terminate the operation that are exposing failures.
+   The Fail-safe system tries to avoid raising Failures as much as possible.
 21.What is final, finally and finalize ?
+   final is a keyword used in Java to restrict the modification of a variable, method, or class.
+   finally is a block used in Java to ensure that a section of code is always executed, even if an exception is thrown. 
+   finalize is a method in Java used to perform cleanup processing on an object before it is garbage collected.
 22.In java, are true and false keywords ?
-23.What is the purpose of "Garbage Collection" ? 
-24.What are the types of ResultSet ?
-25.What is difference between "wait" and "sleep" methods in Java ? 
+   true, false, and null might seem like keywords, but they are actually literals; you cannot use them as identifiers in your programs.
+23.What is the purpose of "Garbage Collection" ? [Need more time]
+   Garbage collection ensures that a program does not exceed its memory quota or reach a point that it can no longer function.
+   It also frees up developers from having to manually manage a program's memory, which, in turn, reduces the potential for memory-related bugs.
+24.What are the types of ResultSet ? [Need more time]
+   ResultSet contains results of the SQL query. There are 3 basic types of ResultSet.
+    Forward-only
+    As name suggest, this type can only move forward and are non-scrollable.
+
+    Scroll-insensitive
+    This type is scrollable which means the cursor can move in any direction. It is insensitive which means any change to the database will not show change in the ResultSet while it open.
+
+    Scroll-sensitive
+    This type allows cursor to move in any direction and also propagates the changes done to the database.
+
+25.What is difference between "wait" and "sleep" methods in Java ?
+   sleep() is the simplest way to put your thread to a sleep for finite duration while wait() is a sophisticated way for inter-thread communication in Java over an object.
 26.What is servlet context ? 
 27.What happens if one of the members in a class does not implement Serializable interface ?
 28.What is race condition ? 
