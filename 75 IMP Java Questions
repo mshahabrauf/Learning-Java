@@ -116,10 +116,17 @@ Java Freshers Top 75 Core Java Intervie Questions List Java Interview Questions
 25.What is difference between "wait" and "sleep" methods in Java ?
    sleep() is the simplest way to put your thread to a sleep for finite duration while wait() is a sophisticated way for inter-thread communication in Java over an object.
 26.What is servlet context ? 
+An object of ServletContext is created by the web container at time of deploying the project. This object can be used to get configuration information from web.xml file. There is only one ServletContext object per web application.
+
 27.What happens if one of the members in a class does not implement Serializable interface ?
+If our class does not implement Serializable interface, or if it is having a reference to a non-Serializable class, then the JVM will throw NotSerializableException.
+
 28.What is race condition ? 
+A race condition occurs when two or more threads can access shared data and they try to change it at the same time. Because the thread scheduling algorithm can swap between threads at any time, you don't know the order in which the threads will attempt to access the shared data. Therefore, the result of the change in data is dependent on the thread scheduling algorithm, i.e. both threads are "racing" to access/change the data.
 29.How to get current time in milli seconds ?
+   System.currentTimeMillis();
 30.How can you convert Map to List ? 
+List<Value> list = new ArrayList<Value>(map.values());
 31.What is strictfp keyword ?
 32.What is System.out in Java ? 
 33.What is difference between ServletOuptputStream and PrintWriter ? 
@@ -154,13 +161,57 @@ Java Freshers Top 75 Core Java Intervie Questions List Java Interview Questions
 61.What is the difference between "Static Synchronized" and "Synchronized" methods ?
 62.What is the order of catch blocks when catching more than one exception ? 
 63.What is the difference between the prefix and postfix forms of the increment(++) operator ? 
-64.What is hashCode ? 65.What is the difference between Hashtable and HashMap ?
-66.What are the restrictions when overriding a method ? 67.What is the use of assert keyword ? 
+64.What is hashCode ? 
+
+65.What is the difference between Hashtable and HashMap ?
+
+66.What are the restrictions when overriding a method ?
+
+1> The Overrinding method should have the same argument list as the Parent class method.
+
+2> The return type should be the same/subclass of the return type for the parent class method.
+
+3> The access level should be same or less restrictive as the parent class method.
+
+4> The overriden method can throw the same or Narrower exception and not a broader one.
+
+
+67.What is the use of assert keyword ? 
+
 68.What is difference between break, continue and return statements ? 
+break is used to exit (escape) the for-loop, while-loop, switch-statement that you are currently executing.
+
+return will exit the entire method you are currently executing (and possibly return a value to the caller, optional).
+
+continue will go directly to the next loop of a for or while.
+
 69.What is the difference between while and do-while statements ?
+while (condition) { 
+         // block of code 
+     } 
+ do { 
+         // block of code 
+     } while (condition); 
+
 70.When does the compiler provides the default constructor ?
+A default (no-argument) constructor is automatically created only when you do not define any constructor yourself.
 71.How to create and start a thread in Java ? 
+one.start();
+one.join();
+
 72.Can I extend a "Final" class in Java ? 
+A class that cannot be further extended is called a final class in Java. A final class is declared using the final keyword. An abstract class cannot be a final class, hence, it can only be created when the class possesses a completion in nature.
 73.Explain "volatile" keyword in Java ?
+A field may be declared volatile, in which case the Java Memory Model ensures that all threads see a consistent value for the variable
 74.Can we catch "RuntimeException" ? What is "Checked" and "Unchecked" Exception ? 
+In Java, there are two types of exceptions: checked exceptions and un-checked exceptions. A checked exception must be handled explicitly by the code, whereas, an un-checked exception does not need to be explicitly handled.
+
+For checked exceptions, you either have to put a try/catch block around the code that could potentially throw the exception, or add a "throws" clause to the method, to indicate that the method might throw this type of exception (which must be handled in the calling class or above).
+
+Any exception that derives from "Exception" is a checked exception, whereas a class that derives from RuntimeException is un-checked. RuntimeExceptions do not need to be explicitly handled by the calling code.
+
 75.When to make a constructor "private" and why ?
+Some reasons where you may need private constructor:
+
+The constructor can only be accessed from static factory method inside the class itself. Singleton can also belong to this category.
+A utility class, that only contains static methods.
