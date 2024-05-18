@@ -1,18 +1,72 @@
 Java Freshers Top 75 Core Java Intervie Questions List Java Interview Questions
 
 1.Can Java thread object invoke start method "twice" ? 
+  It is never legal to start a thread more than once. In particular, a thread may not be restarted once it has completed execution.
+          Throws: IllegalThreadStateException - if the thread was already started.
 2.Give the list of Java Object class methods ?
-3.Can we call servlet destory() from service() ? 
+  toString(): The toString() provides a String representation of an object and is used to convert an object to a String. 
+              The default toString() method for class Object returns a string consisting of the name of the class of which the object is an instance, 
+              the at-sign character `@’, and the unsigned hexadecimal representation of the hash code of the object
+  hashCode(): For every object, JVM generates a unique number which is a hashcode.
+              It returns distinct integers for distinct objects.
+              A common misconception about this method is that the hashCode() method returns the address of the object, which is not correct.
+              It converts the internal address of the object to an integer by using an algorithm. 
+              The hashCode() method is native because in Java it is impossible to find the address of an object, 
+              so it uses native languages like C/C++ to find the address of the object.
+  equals(Object obj): It compares the given object to “this” object (the object on which the method is called).
+                      It gives a generic way to compare objects for equality. 
+                      It is recommended to override the equals(Object obj) method to get our own equality condition on Objects.
+  finalize(): This method is called just before an object is garbage collected. 
+              It is called the Garbage Collector on an object when the garbage collector determines that there are no more references to the object. 
+              We should override finalize() method to dispose of system resources, 
+              perform clean-up activities and minimize memory leaks.
+  getClass(): It returns the class object of “this” object and is used to get the actual runtime class of the object.
+              It can also be used to get metadata of this class. The returned Class object is the object that is locked by static
+              synchronized methods of the represented class. As it is final so we don’t override it.
+  clone(): It returns a new object that is exactly the same as this object.
+3.Can we call servlet destory() from service():
+  The servlet's destroy() method is only called by the container whenever it's going to be shutdown. 
+  During container's shutdown all servlets will be destroyed. 
+  You should not call the method yourself. 
+  The destroy() method just offers you the opportunity to execute some code upon shutdown. 
+  For example, to close some external resources which were opened during init().
 4.Can we override a static method ? 
-5.Can you list "Serialization" Interface methods ?
+  No, we cannot override static methods because method overriding is based on dynamic binding at runtime and the static methods are bonded using static binding at compile time.
+          So, we cannot override static methods.
+5.Can you list "Serialization" Interface methods ? 
+  The Serializable interface is present in java.io package. 
+  It is a marker interface. A Marker Interface does not have any methods and fields.
+  Thus classes implementing it do not have to implement any methods.
 6.What is the difference between super() and this() ? 
+  "this()" can only be used to invoke other constructors within the same class, while "super()" invokes the parent class constructor.
 7.How to prevent a method from being overridden ? 
+  The final way of preventing overriding is by using the final keyword in your method. 
+          The final keyword puts a stop to being an inheritance. Hence, 
+          if a method is made final it will be considered final implementation and no other class can override the behavior.
 8.Can we create abstract classes without any abstract methods ? 
+  Yes, you can declare abstract class without defining an abstract method in it. 
+          Once you declare a class abstract it indicates that the class is incomplete and, 
+          You cannot instantiate it. Hence, if you want to prevent instantiation of a class directly you can declare it abstract.
 9.Explain private,protected,public ? 
+  Public - the property or method can be accessed from everywhere. This is default. 
+          Protected - the property or method can be accessed within the class and by classes derived from that class. 
+          Private - the property or method can ONLY be accessed within the class.
 10.Can we have static methods in interface ?
+  Similar to Default Method in Interface, the static method in an interface can be defined in the interface, 
+          but cannot be overridden in Implementation Classes
 11.What is transient variable ?
-12.Incase, there is a return at the end of try block, will execute finally block ? 
+  In Java, the transient keyword is used to mark a variable as transient. 
+           When applied to a variable, it instructs the Java Virtual Machine (JVM) to exclude the variable from the default serialization process. 
+           Serialization is the process of converting an object into a stream of bytes to store it in memory or transmit it over a network.
+           The main purpose of marking a variable as transient is to prevent its value from being persisted. 
+           This is particularly useful when dealing with sensitive or non-serializable data that should not be stored or transmitted. 
+           By excluding such variables from serialization, we can ensure the privacy and integrity of the data.
+12.Incase, there is a return at the end of try block, will execute finally block ?
+  Yes, The result of the try/catch expression will be the last line of either the try or catch block, 
+          but the finally block will always execute no matter what
 13.What is abstract class or abstract method ?
+   Abstract class: is a restricted class that cannot be used to create objects (to access it, it must be inherited from another class). 
+   Abstract method: can only be used in an abstract class, and it does not have a body. The body is provided by the subclass (inherited from).
 14.What is default value of a boolean ?
 15.When to use LinkedList or ArrayList ? 
 16.What is daemon thread ? 
