@@ -147,8 +147,11 @@ List<Value> list = new ArrayList<Value>(map.values());
 49.Can we initialize uninitialized final variable ?
 50.Can we declare abstract method as final ?
 51.Can we have finally block without catch block ?
+The finally block always executes when the try block exits. So you can use finally without catch but you must use try. The finally block always executes when the try block exits.
 52.What is pass by value and pass by reference ?
+https://sentry.io/answers/java-pass-by-reference-or-value/
 53.Can we declare main method as private ? 
+Yes, we can declare the main method as private in Java. It compiles successfully without any errors but at the runtime, it says that the main method is not public.
 54.What is the difference between preemptive scheduling and time slicing ?
 53.Can non-static member classes (Local classes) have static members ?
 54.What are the environment variables do we neet to set to run Java ?
@@ -159,11 +162,23 @@ List<Value> list = new ArrayList<Value>(map.values());
 59.What is the purpose of Runtime and System class ? 
 60.Which one is faster ? ArrayList or Vector ? Why ? 
 61.What is the difference between "Static Synchronized" and "Synchronized" methods ?
+
 62.What is the order of catch blocks when catching more than one exception ? 
+
+Order of catch blocks: The order of the catch blocks matters. You should place catch blocks for more specific exception types before those for more general types. This allows Java to match the most specific exception type first. Not abiding by this rule will give you a compilation error.
+
 63.What is the difference between the prefix and postfix forms of the increment(++) operator ? 
+Because what is really happening are two things, first i is being returned and then i is being incremented. If you write ++i then those two things happen in the opposite order.
+
 64.What is hashCode ? 
 
+As to HotSpot JVM, it uses random number generator for initial calculation of identity hashCode. After the hashCode is calculated for the first time, it is saved in the object header so that subsequent calls to identityHashCode will return the same value.
+
 65.What is the difference between Hashtable and HashMap ?
+
+Hashtable is synchronized, whereas HashMap is not. This makes HashMap better for non-threaded applications, as unsynchronized Objects typically perform better than synchronized ones.
+
+Hashtable does not allow null keys or values. HashMap allows one null key and any number of null values.
 
 66.What are the restrictions when overriding a method ?
 
